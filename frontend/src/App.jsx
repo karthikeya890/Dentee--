@@ -16,7 +16,9 @@ const App = () => {
           path="/"
           element={
             <ProtectedRoute>
-              <Home />
+              <Suspense fallback={<ServicesSkeleton />}>
+                <Services />
+              </Suspense>
             </ProtectedRoute>
           }
         />
