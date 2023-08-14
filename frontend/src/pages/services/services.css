@@ -1,0 +1,373 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 10px solid #00000015;
+}
+
+.logo-sk {
+  width: 100px;
+  height: 100px;
+}
+
+.logo-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.check-in-out {
+  width: 100px;
+  border: none;
+}
+
+.profile-btn {
+  background-color: #00000080;
+  color: #ffffff;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  border: none;
+}
+
+.profile-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.services-heading {
+  color: #0d6efd;
+  margin: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* ---------------------- */
+
+.manage-card {
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 0px 8px #0d6efd;
+  transition: transform 0.5s;
+  color: #0d6efd;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-here-btn {
+  background-color: transparent;
+  border: 1px solid #0d6efd;
+  color: #0d6efd;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+.manage-card:hover {
+  transform: scale(1.05);
+  background-color: #0d6efd;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.manage-card:hover .click-here-btn {
+  transform: scale(1.05);
+  background-color: #0d6efd;
+  color: #ffffff;
+  box-shadow: none;
+  border: 1px solid #ffffff;
+}
+
+.manage-icon-container {
+  margin-top: -50px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  background-color: #0d6efd;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manage-icon {
+  color: #ffffff;
+  height: 30px;
+  width: 30px;
+}
+
+.manage-card:hover .manage-icon {
+  color: #0d6efd;
+}
+
+.manage-card:hover .manage-icon-container {
+  background-color: #ffffff;
+  border: 1px solid #0d6efd;
+}
+
+/* ------------------------------------- */
+
+.educate-card {
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 0px 8px #198754;
+  transition: transform 0.5s;
+  color: #198754;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-here-educate-btn {
+  background-color: transparent;
+  border: 1px solid #198754;
+  color: #198754;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+.educate-card:hover {
+  transform: scale(1.05);
+  background-color: #198754;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.educate-card:hover .click-here-educate-btn {
+  transform: scale(1.05);
+  background-color: #198754;
+  color: #ffffff;
+  box-shadow: none;
+  border: 1px solid #ffffff;
+}
+
+.educate-icon-container {
+  margin-top: -50px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  background-color: #198754;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.educate-icon {
+  color: #ffffff;
+  height: 30px;
+  width: 30px;
+}
+
+.educate-card:hover .educate-icon {
+  color: #198754;
+}
+
+.educate-card:hover .educate-icon-container {
+  background-color: #ffffff;
+  border: 1px solid #198754;
+}
+
+/* ------------------------------------- */
+
+.buy-card {
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 0px 8px #ffc107;
+  transition: transform 0.5s;
+  color: #ffc107;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-here-buy-btn {
+  background-color: transparent;
+  border: 1px solid #ffc107;
+  color: #ffc107;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+.buy-card:hover {
+  transform: scale(1.05);
+  background-color: #ffc107;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.buy-card:hover .click-here-buy-btn {
+  transform: scale(1.05);
+  background-color: #ffc107;
+  color: #ffffff;
+  box-shadow: none;
+  border: 1px solid #ffffff;
+}
+
+.buy-icon-container {
+  margin-top: -50px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  background-color: #ffc107;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buy-icon {
+  color: #ffffff;
+  height: 30px;
+  width: 30px;
+}
+
+.buy-card:hover .buy-icon {
+  color: #ffc107;
+}
+
+.buy-card:hover .buy-icon-container {
+  background-color: #ffffff;
+  border: 1px solid #ffc107;
+}
+
+/* ------------------------------------- */
+
+.discover-card {
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 0px 8px #dc3545;
+  transition: transform 0.5s;
+  color: #dc3545;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-here-discover-btn {
+  background-color: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+.discover-card:hover {
+  transform: scale(1.05);
+  background-color: #dc3545;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.discover-card:hover .click-here-discover-btn {
+  transform: scale(1.05);
+  background-color: #dc3545;
+  color: #ffffff;
+  box-shadow: none;
+  border: 1px solid #ffffff;
+}
+
+.discover-icon-container {
+  margin-top: -50px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  background-color: #dc3545;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discover-icon {
+  color: #ffffff;
+  height: 30px;
+  width: 30px;
+}
+
+.discover-card:hover .discover-icon {
+  color: #dc3545;
+}
+
+.discover-card:hover .discover-icon-container {
+  background-color: #ffffff;
+  border: 1px solid #dc3545;
+}
+
+.drop-down-container {
+  position: absolute;
+  top: 80px;
+  right: 25px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #00000030;
+}
+
+.drop-down-container::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border: 1px solid #00000030;
+  transform: rotate(45deg);
+  border-bottom: none;
+  border-right: none;
+}
+
+.drop-down-ul {
+  padding: 0px;
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+.drop-down-li {
+  border-bottom: 1px solid #00000015;
+  padding: 10px;
+}
+
+.drop-down-container.active {
+  transform: translateY(0);
+  transition: 0.5s ease;
+}
+
+.drop-down-container.inactive {
+  opacity: 1;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: 0.1s ease;
+}
+
+.logout {
+  background-color: #dc3545;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: 0px;
+  color: #fff;
+  width: 100%;
+}
