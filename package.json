@@ -1,0 +1,18 @@
+{
+  "name": "dentee--",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && nodemon server.js",
+    "prisma": "cd backend && npx prisma studio",
+    "start": "concurrently \"npm run frontend\" \"npm run backend\" \"npm run prisma\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

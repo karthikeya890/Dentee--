@@ -1,7 +1,0 @@
-POST http://localhost:3007/register
-Content-Type: application/json
-
-{
-    "name":"karthikeya",
-    "email":"bunnymkk9@gmail.com"
-}

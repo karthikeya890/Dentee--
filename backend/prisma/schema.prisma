@@ -11,13 +11,31 @@ datasource db {
 }
 
 model Employees {
-  id         Int      @id @default(autoincrement())
-  createdAt  DateTime
-  modifiedAt DateTime @default(now())
-  deletedAt  DateTime @default(now())
-  name       String
-  email      String   @unique
-  password   String
-  role       String
-  active     Boolean  @default(false)
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  role      String
+  active    Boolean   @default(false)
+  createdAt DateTime
+  updatedAt DateTime  @default(now())
+  clinics   clinics[]
+}
+
+model clinics {
+  id            Int        @id @default(autoincrement())
+  name          String
+  validTill     DateTime
+  address1      String
+  address2      String
+  country       String
+  state         String
+  city          String
+  zipcode       String
+  timeZone      String
+  defaultClinic Boolean    @default(false)
+  employees     Employees? @relation(fields: [employeesId], references: [id])
+  employeesId   Int?
+  createdAt     DateTime
+  updatedAt     DateTime   @default(now())
 }

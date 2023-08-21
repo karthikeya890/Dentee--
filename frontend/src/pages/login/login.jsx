@@ -1,11 +1,9 @@
+import "./login.css";
 import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
-import doctors from "../../images/doctors.jpg";
-import "./login.css";
 import { useLoginMutation } from "../../redux/apiSlice";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
 
 import Cookies from "js-cookie";
 const Login = () => {
@@ -22,12 +20,7 @@ const Login = () => {
       Cookies.set("jwtToken", data.jwtToken, { expires: 1 });
       nagivate("/services", { replace: "true" });
     }
-    isError &&
-      toast.error(error.data.message, {
-        position: "top-center",
-        autoClose: 2000,
-        theme: "colored",
-      });
+    isError && toast.error(error.data.message);
   }, [isSuccess, isError]);
 
   const onSubmitHandler = (event) => {
@@ -134,11 +127,21 @@ const Login = () => {
   return (
     <div className="login-container">
       <header className="login-header">
-        <img src={logo} className="login-header-logo" loading="lazy" />
+        <img
+          src={logo}
+          className="login-header-logo"
+          loading="lazy"
+          alt="logo-img"
+        />
       </header>
 
       <main className="login-main-container">
-        <img className="login-doctors-img" src={doctors} />
+        <img
+          className="login-doctors-img"
+          src="https://res.cloudinary.com/dcm21aeqp/image/upload/v1692043877/doctors-min_mymjjw.jpg"
+          alt="doctors-img"
+          loading="lazy"
+        />
         <form className="login-form-container" onSubmit={onSubmitHandler}>
           <h3 className="login-form-header">Login</h3>
           {emailSectionHandler()}
@@ -146,7 +149,7 @@ const Login = () => {
           {loginBtnHandler()}
           {registerParaHandler()}
         </form>
-        <ToastContainer />
+        <Toaster position="top-center" reverseOrder={false} />
       </main>
     </div>
   );

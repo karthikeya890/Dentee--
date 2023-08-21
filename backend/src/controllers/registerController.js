@@ -1,9 +1,7 @@
-const { PrismaClient } = require("@prisma/client");
+const prisma = require("../prismaInstance");
 const generatePassword = require("../utils/passwordGenerator");
 const { hashPassword } = require("../utils/bcrypt");
 const nodemailer = require("nodemailer");
-
-const prisma = new PrismaClient();
 
 const register = async (req, res) => {
   const { name, email, createdAt } = req.body;
@@ -45,17 +43,12 @@ const register = async (req, res) => {
 
     if (response) {
       transporter.sendMail(mailOptions);
-
-      res.send({
-        message:
-          "User created Successfully. Please check your email for confirmation",
-      });
+      const message =
+        "User created Successfully. Please check your email for confirmation";
+      return res.send({ message });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
-    process.exit(1);
-  } finally {
-    prisma.$disconnect();
+    return res.status(500).json({ message: error.message });
   }
 };
 

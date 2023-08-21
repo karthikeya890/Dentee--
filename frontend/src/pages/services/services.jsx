@@ -1,74 +1,46 @@
 import React from "react";
 import logo from "../../images/logo.png";
 import "./services.css";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
-  faBars,
   faClipboard,
   faCartShopping,
   faUserPen,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
+
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import Dropdown from "react-bootstrap/Dropdown";
-import { useSelector, useDispatch } from "react-redux";
-// import {
-//   getBasicUserDetails,
-//   updateUserDetails,
-// } from "../../redux/slices/employees-slice";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import { PulseLoader } from "react-spinners";
+import {
+  useGetEmployeeQuery,
+  useUpdateEmployeeMutation,
+} from "../../redux/apiSlice";
+import ServicesSkeleton from "./servicesSkeleton";
+import { useDispatch } from "react-redux";
+import { api } from "../../redux/apiSlice";
 const Services = () => {
-  const runDispatch = useRef(true);
-
-  //   const dispatch = useDispatch();
-
-  const items = [{ active: true }];
-
-  const status = "fulfilled";
-
-  const checkInOutStatus = "fulfilled";
-
-  //   const { items, status, checkInOutStatus } = useSelector(
-  //     (state) => state.users
-  //   );
-
-  //   useEffect(() => {
-  //     if (runDispatch.current) {
-  //       runDispatch.current = false;
-  //       dispatch(getBasicUserDetails());
-  //     }
-  //   }, []);
+  const { data, isLoading, isSuccess } = useGetEmployeeQuery();
+  const [updateEmployee] = useUpdateEmployeeMutation();
 
   const [drop, setDrop] = useState(false);
-
+  const dispatch = useDispatch();
   const nagivate = useNavigate();
 
   const logoHandler = () => {
     return (
-      <Link to="/Services">
-        <img className="logo" src={logo} />
+      <Link to="/services">
+        <img alt="logo" className="logo" src={logo} />
       </Link>
     );
-  };
-
-  const checkInOutLoader = () => {
-    return <PulseLoader size={10} color="#0d6efd" />;
   };
 
   const checkOutHandler = () => {
     return (
       <button
         onClick={() => {
-          dispatch(
-            updateUserDetails({
-              active: false,
-            })
-          );
+          updateEmployee({ active: false });
         }}
         className="check-in-out btn btn-danger"
       >
@@ -81,11 +53,7 @@ const Services = () => {
     return (
       <button
         onClick={() => {
-          dispatch(
-            updateUserDetails({
-              active: true,
-            })
-          );
+          updateEmployee({ active: true });
         }}
         className="check-in-out btn btn-success"
       >
@@ -95,18 +63,13 @@ const Services = () => {
   };
 
   const checkInOutHandler = () => {
-    return (
-      <>
-        {checkInOutStatus === "pending"
-          ? checkInOutLoader()
-          : items[0].active
-          ? checkOutHandler()
-          : checkInHandler()}
-      </>
-    );
+    if (data.active) return checkOutHandler();
+
+    if (!data.active) return checkInHandler();
   };
 
   const onLogoutHandler = () => {
+    dispatch(api.util.resetApiState());
     Cookies.remove("jwtToken");
     nagivate("/login");
   };
@@ -135,6 +98,7 @@ const Services = () => {
     return (
       <>
         <button
+          type="button"
           onClick={() => {
             setDrop(!drop);
           }}
@@ -225,47 +189,14 @@ const Services = () => {
     );
   };
 
-  const pendingHandler = () => {
-    return (
-      <div className="container-fluid p-0">
-        <header className="header">
-          <Skeleton width={120} height={50} />
-          <div className="d-flex align-items-center">
-            <Skeleton width={100} height={50} />
-            <Skeleton className="ms-4" circle="true" width={50} height={50} />
-          </div>
-        </header>
-        <main className="container-fluid d-flex flex-column align-items-center">
-          <Skeleton height={20} width={100} className="services-heading" />
-          <div className="container">
-            <div className="row mt-5">
-              <div className="col-12 col-sm-6 col-lg-3 my-4 my-lg-0 d-flex flex-column align-items-center justify-content-center">
-                <Skeleton height={200} width={200} />
-              </div>
-              <div className="col-12 col-sm-6 col-lg-3 my-4 my-lg-0 d-flex flex-column align-items-center justify-content-center">
-                <Skeleton height={200} width={200} />
-              </div>
-              <div className="col-12 col-sm-6 col-lg-3 my-4 my-lg-0 d-flex flex-column align-items-center justify-content-center">
-                <Skeleton height={200} width={200} />
-              </div>
-              <div className="col-12 col-sm-6 col-lg-3 my-4 my-lg-0 d-flex flex-column align-items-center justify-content-center">
-                <Skeleton height={200} width={200} />
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  };
-
-  const fulfilledHandler = () => {
+  if (isLoading) return <ServicesSkeleton />;
+  if (isSuccess)
     return (
       <div className="container-fluid p-0">
         <header className="header">
           {logoHandler()}
           <div className="d-flex align-items-center">
             {checkInOutHandler()}
-
             {profileHandler()}
           </div>
         </header>
@@ -292,20 +223,6 @@ const Services = () => {
         </main>
       </div>
     );
-  };
-
-  const renderComponentsHandler = () => {
-    switch (status) {
-      case "pending":
-        return pendingHandler();
-      case "fulfilled":
-        return fulfilledHandler();
-      default:
-        return <div>something went wrong</div>;
-    }
-  };
-
-  return <>{renderComponentsHandler()}</>;
 };
 
 export default Services;

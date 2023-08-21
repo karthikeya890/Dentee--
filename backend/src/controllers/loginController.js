@@ -1,5 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const prisma = require("../prismaInstance");
 const { comparePassword } = require("../utils/bcrypt");
 const { generateToken } = require("../utils/jwt");
 
@@ -20,8 +19,10 @@ const login = async (req, res) => {
       );
 
       if (ispasswordValid) {
-        const token = await generateToken(response);
-        res.send({ jwtToken: token });
+        const token = await generateToken({
+          id: response.id,
+        });
+        return res.send({ jwtToken: token });
       } else {
         throw Error("Incorrect password. Please try Again.");
       }
@@ -29,9 +30,7 @@ const login = async (req, res) => {
       throw Error("The email address is not associated with any account.");
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
-  } finally {
-    prisma.$disconnect();
+    return res.status(500).json({ message: error.message });
   }
 };
 

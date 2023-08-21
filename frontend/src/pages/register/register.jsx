@@ -1,11 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
-import doctors from "../../images/doctors.jpg";
+import doctors from "../../images/dentee.jpg";
 import "./register.css";
 import { useRegisterMutation } from "../../redux/apiSlice";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,27 +16,12 @@ const Register = () => {
 
   const [register, { isSuccess, data, isError, error }] = useRegisterMutation();
 
-  useMemo(() => {
-    isError &&
-      !isSuccess &&
-      toast.error(error.data.message, {
-        position: "top-center",
-        autoClose: 2000,
-        theme: "colored",
-      });
-  }, [isError]);
+  useEffect(() => {
+    isSuccess && toast.success(data.message);
+    isError && toast.error(error.data.message);
+  }, [isSuccess, isError]);
 
-  useMemo(() => {
-    isSuccess &&
-      !isError &&
-      toast.success(data.message, {
-        position: "top-center",
-        autoClose: 2000,
-        theme: "colored",
-      });
-  }, [isSuccess]);
-
-  // Doctors Image cod e
+  // Doctors Image code
 
   const doctorsImageHandler = () => {
     return <img className="signUp-doctors-img" src={doctors} />;
@@ -172,7 +156,7 @@ const Register = () => {
       <main className="signUp-main-container">
         {doctorsImageHandler()}
         {formHandler()}
-        <ToastContainer />
+        <Toaster position="bottom-right" reverseOrder={false} />
       </main>
     </div>
   );
