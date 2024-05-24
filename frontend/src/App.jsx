@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import Home from "./pages/home/home";
 const Register = lazy(() => import("./pages/register/register"));
 const Login = lazy(() => import("./pages/login/login"));
 const Clinics = lazy(() => import("./pages/clinics/clinics"));
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<div>Home</div>} />
+        <Route path="/" element={Home} />
         <Route
           path="/register"
           element={
