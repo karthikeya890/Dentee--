@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookies from "js-cookie";
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3008",
+    baseUrl: "https://dentee-7xuo.vercel.app",
   }),
   prepareHeaders: (headers, { getState }) => {
     headers.set("Accept-Encoding", gzip, compress, br);
