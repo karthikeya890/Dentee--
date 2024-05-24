@@ -1,6 +1,6 @@
 import "./login.css";
-import { useEffect, useMemo, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
 import { useLoginMutation } from "../../redux/apiSlice";
 import toast, { Toaster } from "react-hot-toast";
