@@ -4,7 +4,6 @@ const cors = require("cors");
 const app = express();
 
 // app.use(compression());
-app.use(cors());
 app.use(
   cors({
     origin: ["https://dentee-frontend.vercel.app", "http://localhost:5173"],
