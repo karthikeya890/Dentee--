@@ -30,6 +30,6 @@ app.get("/", (req, res) => {
   res.send({ meg: "welcome" });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Sever is Running }`);
 });
