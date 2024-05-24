@@ -5,7 +5,11 @@ const app = express();
 
 // app.use(compression());
 app.use(cors());
-app.use(cors({ origin: "https://dentee-frontend.vercel.app" }));
+app.use(
+  cors({
+    origin: ["https://dentee-frontend.vercel.app", "http://localhost:5173"],
+  })
+);
 app.use(express.json());
 
 require("dotenv").config();
